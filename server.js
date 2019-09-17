@@ -1,9 +1,9 @@
-// const path = require('path');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const socketIo = require('socket.io');
-const port = 3000;
+require('dotenv').config();
+const port = process.env.PORT || 8000;
 
 const UserService = require('./services/UserService');
 const userService = new UserService();
@@ -11,10 +11,6 @@ const userService = new UserService();
 app.use(express.static(__dirname + '/public'));
 
 const io = socketIo(server);
-
-app.get('/', (req, res) => {
-  res.sendFile('index');
-});
 
 io.on('connection', socket => {
   console.log('socket io: user connected');
@@ -41,4 +37,9 @@ io.on('connection', socket => {
   });
 });
 
+if (process.env.MODE === 'production') {
+  app.get('/', (req, res) => {
+    res.sendFile('index');
+  });
+}
 server.listen(port, () => console.log(`Server is running on port ${port}`));
