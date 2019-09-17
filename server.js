@@ -10,15 +10,17 @@ const userService = new UserService();
 
 app.use(express.static(__dirname + '/public'));
 
-const io = socketIo(server);
+const io = socketIo.listen(server);
 
 io.on('connection', socket => {
   console.log('socket io: user connected');
   socket.on('join', name => {
+    console.log('add user');
     userService.addUser({
       id: socket.id,
       name
     });
+    io.emit('update', { users: userService.getAllUsers() });
   });
   io.emit('update', { users: userService.getAllUsers() });
   socket.on('disconnect', () => {
@@ -29,11 +31,13 @@ io.on('connection', socket => {
     });
   });
   socket.on('message', msg => {
-    const { name } = userService.getUserById(socket.id);
-    socket.broadcast.emit('message', {
-      msg: msg.text,
-      from: name
-    });
+    // const { name } = userService.getUserById(socket.id);
+    // console.log('user id ', socked.id);
+    console.log('msg is: ', msg);
+    // socket.broadcast.emit('message', {
+    //   msg: msg.text,
+    //   from: name
+    // });
   });
 });
 
