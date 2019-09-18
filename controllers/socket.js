@@ -3,14 +3,15 @@ module.exports = function(io, userService) {
     console.log('SockeIO: socket opened');
 
     socket.on('join', name => {
+      console.log('SockeIO: New user joined the channel');
+
       userService.addUser({
         id: socket.id,
         name
       });
 
-      console.log('SockeIO: New user joined the channel');
-
       io.emit('update', { users: userService.getAllUsers() });
+
       socket.emit('userDisconnected', false);
     });
 
@@ -18,18 +19,20 @@ module.exports = function(io, userService) {
 
     socket.on('leaveChat', () => {
       console.log('SockeIO: User left the channel');
+
       socket.emit('userDisconnected', true);
+
       socket.emit('disconnect');
     });
 
     socket.on('disconnect', () => {
+      console.log('SockeIO: User disconnected from the channel');
+
       userService.removeUser(socket.id);
 
       socket.broadcast.emit('update', {
         users: userService.getAllUsers()
       });
-
-      console.log('SockeIO: User disconnected from the channel');
 
       socket.emit('userDisconnected', true);
     });
