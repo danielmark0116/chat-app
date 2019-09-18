@@ -1,0 +1,27 @@
+.MessageBlob {
+  background: white;
+  border: 1px solid rgba(black, 0.2);
+  min-width: 20%;
+  max-width: 50%;
+  padding: 10px;
+  margin: 5px 20px 15px;
+  border-radius: 10px;
+  position: relative;
+  align-self: flex-start;
+
+  .Sender {
+    position: absolute;
+    bottom: -14px;
+    // font-weight: 900;
+    font-size: 10px;
+  }
+
+  &.Sent {
+    align-self: flex-end;
+    background: rgb(5, 182, 236);
+
+    .Sender {
+      right: 0;
+    }
+  }
+}

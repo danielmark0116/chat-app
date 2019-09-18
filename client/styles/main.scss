@@ -1,3 +1,10 @@
+@import 'components/App';
+@import 'components/MessageForm';
+@import 'components/MessageList';
+@import 'components/UserForm';
+@import 'components/UsersList';
+@import 'components/MessageBlob';
+
 .main {
   color: green;
   font-size: 40px;
