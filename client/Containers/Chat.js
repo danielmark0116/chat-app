@@ -9,6 +9,9 @@ export default function Chat(props) {
   return (
     <div className={style.App}>
       <h1>chat room</h1>
+      <button onClick={props.disconnectFromChannel}>
+        Disconnect from the chat
+      </button>
       <h3>active users</h3>
       <div className={style.AppBody}>
         <div className={style.Users}>

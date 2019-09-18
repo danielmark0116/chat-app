@@ -38,6 +38,10 @@ class App extends Component {
     });
   };
 
+  disconnectFromChannel = () => {
+    socket.emit('leaveChat');
+  };
+
   handleUpdate = users => {
     this.setState({
       users: users
@@ -67,6 +71,7 @@ class App extends Component {
 
     return (
       <Chat
+        disconnectFromChannel={this.disconnectFromChannel}
         activeUser={name}
         socket={socket}
         users={users}
