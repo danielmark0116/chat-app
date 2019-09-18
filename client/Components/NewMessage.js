@@ -11,9 +11,10 @@ export default function NewMessage(props) {
         className={style.MessageForm}
         onSubmit={e => {
           e.preventDefault();
-
-          handleInput('');
-          props.socket.emit('message', newMessage);
+          if (newMessage.length > 0) {
+            handleInput('');
+            props.socket.emit('message', newMessage);
+          }
         }}
       >
         <input
