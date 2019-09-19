@@ -32,7 +32,6 @@ export default function Chat(props: IProps) {
           <UsersList users={props.users}></UsersList>
         </ActiveUsersBlock>
         <ChatBlock>
-          test
           <Messages activeUser={props.activeUser} messages={props.messages} />
           <NewMessage socket={props.socket}></NewMessage>
         </ChatBlock>

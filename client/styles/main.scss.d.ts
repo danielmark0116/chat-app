@@ -20,11 +20,14 @@ interface CssExports {
   'UsersList': string;
   'UsersOnline': string;
   'active_users_block': string;
+  'box': string;
   'chat_block': string;
   'chat_container': string;
-  'main': string;
+  'd_flex': string;
+  'message': string;
+  'message_primary': string;
+  'message_secondary': string;
   'nav': string;
-  'test': string;
 }
 declare const cssExports: CssExports;
 export = cssExports;

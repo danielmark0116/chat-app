@@ -5,28 +5,33 @@
 @import 'components/UsersList';
 @import 'components/MessageBlob';
 
+// FONT
+@import 'font';
+
+// VARIABLES
+@import 'variables';
+
 // MIXINS
 @import 'mixins/rwd';
+@import 'mixins/shadow';
 
 // COMPONENENTS
 @import 'components/chat-container';
 @import 'components/chat-block';
 @import 'components/active-users-block';
 @import 'components/nav';
+@import 'components/box';
+@import 'components/message';
 
 body {
-  background: yellow;
   min-height: 100%;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: $font-light;
 }
 
-.main {
-  color: green;
-  font-size: 40px;
-  font-weight: 900;
-}
-.test {
-  color: red;
+.d_flex {
+  display: flex;
 }

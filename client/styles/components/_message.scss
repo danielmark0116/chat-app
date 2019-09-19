@@ -1,0 +1,30 @@
+$message-blob-padding-sides: 20px;
+
+.message {
+  @extend .box;
+  padding: 15px $message-blob-padding-sides;
+  max-width: 45%;
+  margin: 2.5%;
+  font-weight: $font-thin;
+  font-size: 16px;
+  position: relative;
+
+  span {
+    position: absolute;
+    bottom: -25px;
+    left: $message-blob-padding-sides;
+    color: $dark;
+    font-size: 12px;
+  }
+}
+
+.message_primary {
+  @extend .message;
+  background: $blue;
+  color: $white;
+  margin-left: 52.5%;
+}
+.message_secondary {
+  @extend .message;
+  background: $white;
+}

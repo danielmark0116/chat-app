@@ -1,0 +1,8 @@
+$border-radius: 10px;
+
+.box {
+  border-radius: $border-radius;
+  border: 2px solid $white;
+  background: $white;
+  @include shadow;
+}
