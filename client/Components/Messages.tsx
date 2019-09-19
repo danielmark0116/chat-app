@@ -1,12 +1,16 @@
-import React, { Fragment, useEffect } from 'react';
+import * as React from 'react';
+import { Fragment } from 'react';
 
-import style from '../styles/main.scss';
+import * as style from '../styles/main.scss';
 
-export default function Messages(props) {
-  useEffect(() => {
-    // console.log(props.messages);
-  });
+import { MsgObject } from '../interfaces/MsgInterface';
 
+interface IProps {
+  activeUser: string;
+  messages: Array<MsgObject>;
+}
+
+export default function Messages(props: IProps) {
   return (
     <Fragment>
       <div className={style.MessageList}>

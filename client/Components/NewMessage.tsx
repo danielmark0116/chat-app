@@ -1,8 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import * as React from 'react';
+import { useState, Fragment } from 'react';
 
-import style from '../styles/main.scss';
+import * as style from '../styles/main.scss';
 
-export default function NewMessage(props) {
+import { SocketObject } from '../interfaces/SocketInterface';
+
+interface IProps {
+  socket: SocketObject;
+}
+
+export default function NewMessage(props: IProps) {
   const [newMessage, handleInput] = useState('');
 
   return (

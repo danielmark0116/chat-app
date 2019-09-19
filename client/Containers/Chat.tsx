@@ -1,15 +1,28 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import * as React from 'react';
+import { useState, useEffect, Fragment } from 'react';
 
 import Messages from '../Components/Messages';
 import NewMessage from '../Components/NewMessage';
 
-import style from '../styles/main.scss';
+import * as style from '../styles/main.scss';
 
-export default function Chat(props) {
+import { MsgObject } from '../interfaces/MsgInterface';
+import { UserObject } from '../interfaces/UserInterface';
+import { SocketObject } from '../interfaces/SocketInterface';
+
+interface IProps {
+  activeUser: string;
+  disconnectFromChannel: Function;
+  socket: SocketObject;
+  users: Array<UserObject>;
+  messages: Array<MsgObject>;
+}
+
+export default function Chat(props: IProps) {
   return (
     <div className={style.App}>
       <h1>chat room</h1>
-      <button onClick={props.disconnectFromChannel}>
+      <button onClick={() => props.disconnectFromChannel}>
         Disconnect from the chat
       </button>
       <h3>active users</h3>

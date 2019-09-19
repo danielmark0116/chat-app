@@ -1,6 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import * as React from 'react';
+import { useState, Fragment } from 'react';
 
-export default function Login(props) {
+interface IProps {
+  enterChat: Function;
+}
+
+export default function Login(props: IProps) {
   const [inputValue, handleInput] = useState('');
   const [error, updateError] = useState(false);
 

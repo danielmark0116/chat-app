@@ -10,7 +10,7 @@ module.exports = function(io, userService) {
         name
       });
 
-      io.emit('update', { users: userService.getAllUsers() });
+      io.emit('update', userService.getAllUsers());
 
       socket.emit('userDisconnected', false);
     });
