@@ -1,0 +1,13 @@
+.chat_container {
+  width: 100%;
+  display: flex;
+  background: red;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  // padding-top: 50px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}

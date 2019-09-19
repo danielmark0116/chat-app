@@ -1,0 +1,10 @@
+.active_users_block {
+  flex: 1;
+  background: white;
+  margin-top: 50px;
+
+  @include mobile {
+    max-height: 20vh;
+    overflow-y: scroll;
+  }
+}

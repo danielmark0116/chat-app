@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Fragment } from 'react';
 
-import * as style from '../styles/main.scss';
-
 import { MsgObject } from '../interfaces/MsgInterface';
+
+import * as style from '../styles/main.scss';
 
 interface IProps {
   activeUser: string;

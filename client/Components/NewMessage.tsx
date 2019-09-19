@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useState, Fragment } from 'react';
 
-import * as style from '../styles/main.scss';
-
 import { SocketObject } from '../interfaces/SocketInterface';
+
+import * as style from '../styles/main.scss';
 
 interface IProps {
   socket: SocketObject;

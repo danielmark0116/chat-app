@@ -15,7 +15,7 @@ module.exports = function(io, userService) {
       socket.emit('userDisconnected', false);
     });
 
-    io.emit('update', { users: userService.getAllUsers() });
+    io.emit('update', userService.getAllUsers());
 
     socket.on('leaveChat', () => {
       console.log('SockeIO: User left the channel');
@@ -30,9 +30,7 @@ module.exports = function(io, userService) {
 
       userService.removeUser(socket.id);
 
-      socket.broadcast.emit('update', {
-        users: userService.getAllUsers()
-      });
+      socket.broadcast.emit('update', userService.getAllUsers());
 
       socket.emit('userDisconnected', true);
     });

@@ -3,13 +3,12 @@ import { Component } from 'react';
 import { hot } from 'react-hot-loader';
 const io = require('socket.io-client');
 
-import Login from './Login';
-import Chat from './Chat';
-
 import { MsgObject } from '../interfaces/MsgInterface';
 import { UserObject } from '../interfaces/UserInterface';
-
 import { SocketObject } from '../interfaces/SocketInterface';
+
+import Login from './Login';
+import Chat from './Chat';
 
 const socket: SocketObject = io('/');
 
