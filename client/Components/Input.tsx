@@ -22,9 +22,9 @@ export default function Input(props: IProps) {
         onSubmit={e => {
           e.preventDefault();
           submitHandler(inputValue, true);
+          handleInputChange('');
           if (inputValue.length > 0) {
             submitHandler(inputValue, false);
-            handleInputChange('');
           }
         }}
       >

@@ -3,16 +3,24 @@ module.exports = function(io, userService) {
     console.log('SockeIO: socket opened');
 
     socket.on('join', name => {
-      console.log('SockeIO: New user joined the channel');
+      if (userService.isNameAvailable(name)) {
+        console.log('SockeIO: New user joined the channel');
 
-      userService.addUser({
-        id: socket.id,
-        name
-      });
+        userService.addUser({
+          id: socket.id,
+          name
+        });
 
-      io.emit('update', userService.getAllUsers());
+        io.emit('update', userService.getAllUsers());
 
-      socket.emit('userDisconnected', false);
+        socket.emit('nameTaken', false);
+
+        socket.emit('userDisconnected', false);
+      } else {
+        console.log('SocketIO: user already is logged');
+
+        socket.emit('nameTaken', true);
+      }
     });
 
     io.emit('update', userService.getAllUsers());

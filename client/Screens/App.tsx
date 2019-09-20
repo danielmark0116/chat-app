@@ -17,6 +17,7 @@ interface IState {
   name: string;
   messages: Array<MsgObject>;
   userDisconnected: boolean;
+  nameTaken: boolean;
 }
 
 interface IProps {}
@@ -28,7 +29,8 @@ class App extends Component<IProps, IState> {
       users: [],
       name: null,
       messages: [],
-      userDisconnected: false
+      userDisconnected: false,
+      nameTaken: false
     };
   }
 
@@ -42,6 +44,7 @@ class App extends Component<IProps, IState> {
     socket.on('userDisconnected', (bool: boolean) =>
       this.handleUserDisconnect(bool)
     );
+    socket.on('nameTaken', (bool: boolean) => this.handleTakenName(bool));
   }
 
   componentDidUpdate() {
@@ -72,6 +75,12 @@ class App extends Component<IProps, IState> {
     });
   };
 
+  handleTakenName = (bool: boolean) => {
+    bool
+      ? this.setState({ nameTaken: true })
+      : this.setState({ nameTaken: false });
+  };
+
   disconnectFromChannel = () => {
     socket.emit('leaveChat');
   };
@@ -84,10 +93,10 @@ class App extends Component<IProps, IState> {
   };
 
   render() {
-    const { name, users, messages, userDisconnected } = this.state;
+    const { name, users, messages, userDisconnected, nameTaken } = this.state;
 
-    if (name === null || userDisconnected)
-      return <Login enterChat={this.enterChat} />;
+    if (name === null || userDisconnected || nameTaken)
+      return <Login nameTaken={nameTaken} enterChat={this.enterChat} />;
 
     return (
       <Chat
