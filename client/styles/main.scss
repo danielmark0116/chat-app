@@ -1,10 +1,3 @@
-@import 'components/App';
-@import 'components/MessageForm';
-@import 'components/MessageList';
-@import 'components/UserForm';
-@import 'components/UsersList';
-@import 'components/MessageBlob';
-
 // FONT
 @import 'font';
 
@@ -22,6 +15,10 @@
 @import 'components/nav';
 @import 'components/box';
 @import 'components/message';
+@import 'components/input';
+@import 'components/user-item';
+@import 'components/btn';
+@import 'components/login';
 
 body {
   min-height: 100%;
@@ -34,4 +31,10 @@ body {
 
 .d_flex {
   display: flex;
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
 }

@@ -1,0 +1,31 @@
+.btn {
+  margin: 5px 10px;
+  padding: 10px 20px;
+  background: transparent;
+  border-radius: $border-radius;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  color: $dark;
+  border: 2px solid $dark;
+  @include shadow;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.btn_primary {
+    color: $blue;
+    border-color: $blue;
+    background: $white;
+  }
+
+  &.btn_secondary {
+    color: $white;
+    border-color: $white;
+    background: $blue;
+  }
+}

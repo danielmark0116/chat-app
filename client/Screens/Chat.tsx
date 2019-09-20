@@ -29,7 +29,7 @@ export default function Chat(props: IProps) {
       <Navbar disconnectFromChannel={props.disconnectFromChannel} />
       <div className={style.chat_container}>
         <ActiveUsersBlock>
-          <UsersList users={props.users}></UsersList>
+          <UsersList users={props.users} />
         </ActiveUsersBlock>
         <ChatBlock>
           <Messages activeUser={props.activeUser} messages={props.messages} />

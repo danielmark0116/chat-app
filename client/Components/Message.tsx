@@ -6,6 +6,7 @@ interface IProps {
   isPrimary: boolean;
   children?: string;
   msgAuthor?: string;
+  key?: number;
 }
 
 export default function Message(props: IProps) {
@@ -23,5 +24,6 @@ export default function Message(props: IProps) {
 
 Message.defaultProps = {
   msgAuthor: 'Author',
-  children: 'Message text here...'
+  children: 'Message text here...',
+  key: 1
 };

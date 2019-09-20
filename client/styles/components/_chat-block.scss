@@ -2,4 +2,21 @@
   flex: 3;
   margin-top: 50px;
   display: block;
+  position: relative;
+  padding-bottom: 80px;
+  overflow-y: scroll;
+
+  @include mobile {
+    margin-top: 0;
+  }
+
+  .messages_container {
+    overflow-y: scroll;
+    max-height: 88vh;
+    padding-top: 20px;
+
+    @include mobile {
+      height: 55vh;
+    }
+  }
 }

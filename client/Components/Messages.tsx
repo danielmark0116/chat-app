@@ -1,39 +1,40 @@
 import * as React from 'react';
-import { Fragment } from 'react';
+
+import * as style from '../styles/main.scss';
 
 import { MsgObject } from '../interfaces/MsgInterface';
 
 import Message from './Message';
-
-import * as style from '../styles/main.scss';
 
 interface IProps {
   activeUser: string;
   messages: Array<MsgObject>;
 }
 
-export default function Messages(props: IProps) {
-  return (
-    <Fragment>
-      <Message isPrimary={true}>Hello whtas up?</Message>
-      <Message isPrimary={false}></Message>
-      <br />
-      <br />
-      <div className={style.MessageList}>
-        {props.messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`${style.MessageBlob} ${
-              props.activeUser === msg.from ? style.Sent : null
-            }`}
+export default class Messages extends React.Component<IProps, {}> {
+  nodeRef = React.createRef<HTMLDivElement>();
+
+  componentDidUpdate() {
+    const node = this.nodeRef.current;
+
+    node.scrollTop = node.scrollHeight - node.clientHeight;
+  }
+
+  render() {
+    const { messages, activeUser } = this.props;
+
+    return (
+      <div className={style.messages_container} ref={this.nodeRef}>
+        {messages.map((msg, index) => (
+          <Message
+            key={index}
+            msgAuthor={msg.from === activeUser ? 'You' : msg.from}
+            isPrimary={msg.from === activeUser ? true : false}
           >
-            <span>{msg.msg}</span>
-            <div className={style.Sender}>
-              Sent by: <strong>{msg.from}</strong>
-            </div>
-          </div>
+            {msg.msg}
+          </Message>
         ))}
       </div>
-    </Fragment>
-  );
+    );
+  }
 }

@@ -1,37 +1,24 @@
 import * as React from 'react';
-import { useState, Fragment } from 'react';
 
 import { SocketObject } from '../interfaces/SocketInterface';
 
-import * as style from '../styles/main.scss';
+import Input from './Input';
 
 interface IProps {
   socket: SocketObject;
 }
 
 export default function NewMessage(props: IProps) {
-  const [newMessage, handleInput] = useState('');
+  const { socket } = props;
 
   return (
-    <Fragment>
-      <form
-        className={style.MessageForm}
-        onSubmit={e => {
-          e.preventDefault();
-          if (newMessage.length > 0) {
-            handleInput('');
-            props.socket.emit('message', newMessage);
-          }
-        }}
-      >
-        <input
-          className={style.MessageInput}
-          type="text"
-          value={newMessage}
-          onChange={e => handleInput(e.target.value)}
-        />
-        <button>SEND</button>
-      </form>
-    </Fragment>
+    <Input
+      placeholderText="Your message here"
+      buttonText="send"
+      fixedBottom={true}
+      submitHandler={(msg: string, isEmpty: boolean) => {
+        !isEmpty ? socket.emit('message', msg) : null;
+      }}
+    />
   );
 }

@@ -1,37 +1,34 @@
 import * as React from 'react';
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
+
+import Input from '../Components/Input';
+
+import * as style from '../styles/main.scss';
 
 interface IProps {
   enterChat: Function;
 }
 
 export default function Login(props: IProps) {
-  const [inputValue, handleInput] = useState('');
   const [error, updateError] = useState(false);
 
   return (
-    <Fragment>
-      {error && <p>your alias must be at least 3 chars long</p>}
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          if (inputValue.length > 2) {
-            props.enterChat(inputValue);
-            updateError(false);
-          } else {
-            updateError(true);
-          }
+    <div className={` ${style.login_screen}`}>
+      <p>Enter your nickname and join the chat!</p>
+      <Input
+        buttonText="join"
+        placeholderText="Type in your nickname here"
+        submitHandler={(inputValue: string, isEmpty: boolean) => {
+          !isEmpty
+            ? inputValue.length > 3 && props.enterChat(inputValue)
+            : updateError(true);
         }}
-      >
-        <input
-          type="text"
-          value={inputValue}
-          onChange={e => {
-            handleInput(e.target.value);
-          }}
-        />
-        <button>Enter chat</button>
-      </form>
-    </Fragment>
+      />
+      {error && (
+        <p className={style.error}>
+          Your nickanme must be at least 4 characters long
+        </p>
+      )}
+    </div>
   );
 }

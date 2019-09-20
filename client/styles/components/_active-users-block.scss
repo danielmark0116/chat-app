@@ -1,9 +1,36 @@
 .active_users_block {
   flex: 1;
   margin-top: 50px;
+  position: relative;
 
-  @include mobile {
-    max-height: 20vh;
+  .active_users_block_title {
+    height: 50px;
+  }
+
+  .active_users_block_users {
+    max-height: 80vh;
     overflow-y: scroll;
+
+    @include mobile {
+      height: 20vh;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 15%;
+    right: 0;
+    width: 1px;
+    height: 70%;
+    background: rgba($light, 0.5);
+  }
+
+  h2 {
+    color: $blue;
+    font-weight: $font-thin;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 20px;
   }
 }
